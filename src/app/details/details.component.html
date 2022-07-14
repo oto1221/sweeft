@@ -1,0 +1,77 @@
+<div class="container  bg-white">
+    <div class="container mt-5">
+        <div class="row mt-5">
+            
+            <div  class="col-lg-3 mt-3">                                   
+                <img src="{{user.imageUrl}}" width="100%" alt="Can't load image">
+            </div>
+            <div  class="col-lg-6 mt-3">                                   
+                <div class="border border-success px-2">
+                    <span style="font-weight: bold;">{{user.prefix+user.name+" "+user.lastName}}</span>
+                    <br>
+                    <span>{{user.title}}</span>
+                    <br><br><br>
+                    <span>{{"Email: "+user.email}}</span>
+                    <br>
+                    <span>{{"Ipaddress: "+user.ip}}</span>
+                    <br>
+                    <span>{{"JobArea: "+user.jobArea}}</span>
+                    <br>
+                    <span>{{"JobType: "+user.jobType}}</span>
+                </div>
+            </div>
+            <div  class="col-lg-3 mt-3">                                   
+                <div class="border border-success px-2">
+                    <span style="font-weight: bold;">{{user.company?.name+ " " +user.company?.suffix}}</span>
+                    <br>
+                    <br>
+                    <br>
+                    <span>{{"Country: "+user.address?.country}}</span>
+                    <br>
+                    <span>{{"City: "+user.address?.city}}</span>
+                    <br>
+                    <span>{{"State: "+user.address?.state}}</span>
+                    <br>
+                    <span>{{"Street: "+user.address?.streetAddress}}</span>
+                    <br>
+                    <span>{{"Zip: "+user.address?.zipCode}}</span>
+                    <br>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-2" *ngFor="let i of saveduser;"> 
+                <a (click)="userDetails(i.id)" class="text-danger">{{i.prefix +' '+ i.name +' '+ i.lastName +' > '}}</a> 
+            </div>
+        </div>
+        
+        <div class="row mt-5">
+            
+            <h2>Friends</h2>
+            <div *ngFor="let d of data; let k = index" class="col-lg-3">
+                <a  (click)="userDetails(d.id)">
+                    <div class="box my-4 border border-success" *ngIf="k + 1 === data.length" #theLastList>
+                        <img src="{{d.imageUrl}}" width="100%" alt="Can't load image">
+                        <h5 class="px-2">{{d.prefix+d.name+" "+d.lastName}}</h5>
+                        <p class="px-2">{{d.title}}</p>
+                        
+                    </div>
+                </a>
+                
+                <a  (click)="userDetails(d.id)">
+                    <div class="box my-4 border border-success" *ngIf="k + 1 != data.length">
+                        <img src="{{d.imageUrl}}" width="100%" alt="Can't load image">
+                        <h5 class="px-2">{{d.prefix+d.name+" "+d.lastName}}</h5>
+                        <p class="px-2">{{d.title}}</p>
+                        
+                    </div>
+                </a>
+                
+            </div>
+    
+        </div>
+    </div>
+</div>
+
