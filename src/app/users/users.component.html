@@ -1,0 +1,30 @@
+
+    <div class="container  bg-white">
+        <div class="container mt-5">
+            <div class="row mt-5">
+                <h2 align="center">Users</h2>
+                <div *ngFor="let d of data; let k = index" class="col-lg-3">
+                    <a [queryParams]="{id: d.id }" [routerLink]="['/details/' + d.id]">
+                        <div class="box my-4 border border-success" *ngIf="k + 1 === data.length" #theLastList>
+                            <img src="{{d.imageUrl}}" width="100%" alt="Can't load image">
+                            <h5 class="px-2">{{d.prefix+d.name+" "+d.lastName}}</h5>
+                            <p class="px-2">{{d.title}}</p>
+                            
+                        </div>
+                    </a>
+                    
+                    <a [queryParams]="{id: d.id }" [routerLink]="['/details/' + d.id]">
+                        <div class="box my-4 border border-success" *ngIf="k + 1 != data.length">
+                            <img src="{{d.imageUrl}}" width="100%" alt="Can't load image">
+                            <h5 class="px-2">{{d.prefix+d.name+" "+d.lastName}}</h5>
+                            <p class="px-2">{{d.title}}</p>
+                            
+                        </div>
+                    </a>
+                    
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
